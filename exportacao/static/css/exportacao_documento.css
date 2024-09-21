@@ -1,0 +1,79 @@
+body {
+    width: 21cm;
+    min-height: 29.7cm;
+}
+
+.documento {
+    font-family: "Red Hat Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 10px;
+}
+
+#logo {float: left; width: 8%; margin-bottom: 20px; padding-right: 50px}
+.shipper_1 {float: left; width:22%; text-align: end; font-weight: bold}
+.shipper_2 {float: left; width:26%; text-align: start; margin-left: 5px}
+.shipper_3 {float: left; width:14%; text-align: end; font-weight: bold}
+.shipper_4 {float: left; width:18%; text-align: start; margin-left: 5px}
+
+.cod_processo {
+    float: left;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 999;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #B4A58C
+}
+
+.cliente_1 {float: left; width:20%; text-align: end; font-weight: bold}
+.cliente_2 {float: left; width:25%; text-align: start; margin-left: 10px}
+.cliente_3 {float: left; width:20%; text-align: end; font-weight: bold}
+.cliente_4 {float: left; width:25%; text-align: start; margin-left: 10px; margin-bottom: 20px;}
+
+
+#conforto {
+    height: 13px;
+    rotate: 270deg;
+}
+
+#fotos {
+    height: 50px;
+    mix-blend-mode: darken;
+}
+
+#croqui {
+    height: 25px;
+    mix-blend-mode: darken;
+}
+
+#tecido {
+    height: 30px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead {
+    background-color: #B4A58C;
+}
+
+tbody{font-size: 9px}
+
+td,th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+tr:nth-child(2n) {
+    background-color: rgb(235, 235, 235);
+}
+
+tfoot {
+    font-weight: bolder;
+}
+
+.rodape {margin-top: 20px; float: left; width:100%}

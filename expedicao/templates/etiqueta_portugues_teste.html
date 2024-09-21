@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Etiqueta {{ pedido }}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap">
+    <style>
+        body {margin: 0;}
+
+        .documento {
+            font-family: "Gilroy", "Red Hat Display", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-size: 11px;
+        }
+
+        .bloco_1 {
+            width: 56.5%;
+            padding: 20px;
+            float: left;
+            page-break-inside: avoid;
+        }
+
+        .bloco_2 {
+            width: 39%;
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            float: left;
+            page-break-inside: avoid;
+        }
+
+        .marca_produto {
+            height: 330px;
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #marca {
+            max-height: 80px;
+            max-width: 70%;
+        }
+
+        #produto {
+            max-width: 100%;
+            max-height: 220px;
+            margin-top: 10px;
+        }
+
+        #mascara {
+            max-height: 324px; 
+        }
+
+        #desc_masc {
+            page-break-inside: avoid;
+        }
+
+        #conforto_img {
+            max-height: 35px;
+            max-width: 115px;
+        }
+
+        #croqui_img {
+            max-height: 380px;
+            max-width: 510px;
+        }
+
+        hr {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width:100%; 
+            height: 1px; 
+            background-color: #bfc8cc; 
+            border: #bfc8cc;
+        }
+    </style>
+</head>
+<body>
+    {% for dado in dados %}
+    <div class="documento">
+
+        <div class="bloco_1">
+
+            <div class="rem_dest" style="height: 460px">
+
+                <div id="remetente" style="float: left; color: white; background-color: {{ dado.cor_1 }}; width: 350px; height: 100px; padding: 15px; border-radius: 10px;">
+                    <span style="font-size: 25px;"><b>REMETENTE </b></span>
+                    <br><br>
+                    <div id="rem_dados" style="background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px;">
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>RAZÃO SOCIAL </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.rem_razao }}</span>
+                        <hr>
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>CNPJ </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.rem_cnpj }}</span>
+                        <hr>
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>CEP </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.rem_cep }}</span>
+                        <hr>
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>ENDEREÇO </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.rem_endereco }}</span>
+                        <hr>
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>CIDADE - PAIS </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.rem_cidade }}</span>
+                    </div>
+                </div>
+
+                <div id="destinatario" style="float: left; color: white; background-color: {{ dado.cor_1 }}; width: 350px; height: 100px; padding: 15px; border-radius: 10px; margin-left: 20px;">
+                    <span style="font-size: 25px;"><b>DESTINATÁRIO </b></span>
+                    <br><br>
+                    <div id="dest_dados" style="background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px;">
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>RAZÃO SOCIAL </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.dest_razao }}</span>
+                        <hr>
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>CNPJ </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.dest_cnpj }}</span>
+                        <hr>
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>CEP </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.dest_cep }}</span>
+                        <hr>
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>ENDEREÇO </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.dest_endereco }}</span>
+                        <hr>
+                        <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>CIDADE - PAIS </b></span>
+                        <br><span style="font-size: 18px; color: #23272a;">{{ dado.dest_cidade }}</span>
+                    </div>
+                </div>
+            
+            </div>
+
+
+            <div id="pedido" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 70px; margin: 15px;">
+                <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>PEDIDO </b></span><br>
+                <br><span style="font-size: 18px; color: #23272a;">{% if dado.num_ped %}{{ dado.num_ped }}{% endif %}</span>
+            </div>
+
+            <div id="nota" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 125px; margin: 15px;">
+                <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>NOTA FISCAL</b></span><br>
+                <br><span style="font-size: 18px; color: #23272a;">{% if dado.nota %}{{ dado.nota }}{% endif %}</span>
+            </div>
+
+            <div id="peso" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 120px; margin: 15px;">
+                <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>PESO BRUTO</b></span><br>
+                <br><span style="font-size: 18px; color: #23272a;">{% if dado.peso_bruto %}{{ dado.peso_bruto }}{% endif %}</span>
+            </div>
+
+            <div id="cubagem" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 95px; margin: 15px;">
+                <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>CUBAGEM</b></span><br>
+                <br><span style="font-size: 18px; color: #23272a;">{% if dado.cubagem %}{{ dado.cubagem }} m³{% endif %}</span>
+            </div>
+
+            <div id="volume" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 85px; margin: 15px;">
+                <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>VOLUME</b></span><br>
+                <br><span style="font-size: 18px; color: #23272a;">{% if dado.volume %}{{ dado.volume }}{% endif %}</span>
+            </div>
+
+
+            <div id="transportadora" style="float: left; color: white; background-color: {{ dado.cor_1 }}; width: 260px; height: 100px; padding: 15px; border-radius: 10px; margin-top: 5px; margin-right: 15px">
+                <span style="font-size: 22px;"><b>TRANSPORTADORA </b></span>
+                <br><br>
+                <div id="transporte" style="background-color: {{ dado.cor_2 }}; ; padding: 15px; border-radius: 10px;">
+                    <span style="font-size: 18px; color: {{ dado.cor_1 }}"><b>RAZAO SOCIAL </b></span>
+                    <br><span style="font-size: 16px; color: #23272a;">{{ dado.transportadora }}</span>
+                    <hr>
+                    <span style="font-size: 18px; color: {{ dado.cor_1 }}"><b>MANUAL DE TRANSPORTE </b></span><br>
+                    <div style="text-align: center; margin-top: 10px;; margin-bottom: 10px;"><img width=40% src="data:image/png;base64, {{ dado.qr_code }}"></div>
+                    <div style=" background-color: yellow;">
+                        <b style="font-size: 12px; color: black; text-align: justify;">Não receber com embalagem avariada, consulte o manual do transportador.</b>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mascara" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 440px; margin: 5px">
+                <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>DESCRICAO
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    ID: </b></span>
+                {% if dado.id %}<span style="font-size: 18px; color: #23272a;">{{ dado.id }}</span>{% endif %}
+                <br><br>
+                <span id="desc_masc" style="font-size: 15px; color: #23272a;">{{ dado.desc_masc }}</span>
+            </div>
+
+        </div>
+
+
+        <div class="bloco_2">
+
+            <div class="marca_produto">
+                {% if dado.marca_imagem %}<img id="marca" src="data:image/png;base64, {{ dado.marca_imagem }}">{% endif %}
+                {% if dado.produto_imagem %}<img id="produto" src="data:image/png;base64, {{ dado.produto_imagem }}">{% endif %}
+            </div>
+
+            <span style="font-size: 12px;">*Imagem ilustrativa.</span>
+
+            <div id="familia" style="text-align: center; padding: 15px; width: 100%;">
+                <b style="font-size: 35px; color: {{ dado.cor_1 }};">{{ dado.item }}</b>
+            </div>
+
+
+            <div style="height: 200px; margin-top: 20px;">
+
+                <div id="tecido" style="float: left; width: 110px; height: 190px; margin-right: 15px">
+                    <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>TECIDO</b></span><br><br>
+                    {% for dado_2 in dados_2 %}
+                        {% if dado_2.itpdv_id == dado.itpdv_id and dado_2.tipo == 963 %}
+                            <div style="float: left; width: 105px; margin: 5px;">
+                                <img id="tecido_img" style="float: left; padding-right: 10px" width=35 height=50 src="data:image/png;base64, {{ dado_2.tec_imagem }}">
+                                <span style="font-size: 16px; color: #23272a;">{{ dado_2.pai }}</span><br>
+                                <span style="font-size: 16px; color: #23272a;">{{ dado_2.filho }}</span><br>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+
+                <div id="acabamento" style="float: left; padding-left: 15px; width: 270px; height: 215px; border-left: 1px solid #bfc8cc; border-right: 1px solid #bfc8cc">
+                    <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>ACABAMENTO</b></span><br><br>
+                    {% for dado_2 in dados_2 %}
+                        {% if dado_2.itpdv_id == dado.itpdv_id and dado_2.tipo == 980 %}
+                            <div style="float: left; width: 265px; margin: 5px;">
+                                <img id="acab_imgl" style="float: left; padding-right: 10px" width=35 height=50 src="data:image/png;base64, {{ dado_2.acab_imagem }}">
+                                <span style="font-size: 16px; color: #23272a;">{{ dado_2.pai }}</span><br>
+                                <span style="font-size: 16px; color: #23272a;">{{ dado_2.filho }}</span><br>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>  
+
+                <div id="conforto" style="float: left; width: 115px; height: 90px; margin-left: 15px;">
+                    <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>CONFORTO</b></span>
+                    <div style="text-align: center; margin-top: 20px; height: 70px;">
+                        {% if dado.conforto %}<img id="conforto_img" src="data:image/png;base64, {{ dado.conforto_imagem }}">{% endif %}
+                    </div>
+                    <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>DIMENSÕES</b></span><br>
+                    {% if dado.comprimento %}<br><span style="font-size: 16px; color: {{ dado.cor_1 }}"><b>C:&nbsp;&nbsp;&nbsp;</b>{{ dado.comprimento }}</span>{% endif %}
+                    {% if dado.profundidade %}<br><span style="font-size: 16px; color: {{ dado.cor_1 }}"><b>P:&nbsp;&nbsp;&nbsp;</b>{{ dado.profundidade }}</span>{% endif %}
+                    {% if dado.altura %}<br><span style="font-size: 16px; color: {{ dado.cor_1 }}"><b>A:&nbsp;&nbsp;&nbsp;</b>{{ dado.altura }}</span>{% endif %}
+                </div>
+
+            </div>
+
+            <div id="croqui" style="float: left; padding: 10px; width: 520px; height: 240px; margin-top: 15px;">
+                <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b>MODULACAO DO PRODUTO:&nbsp;&nbsp;</b></span>
+                {% if dado.desc_mod %}<span style="font-size: 16px; color: #23272a;">&nbsp;&nbsp;{{ dado.desc_mod }}</span>{% endif %}
+                <div style="text-align: center; margin-top: 15px;">
+                    {% if dado.croqui %}<img id="croqui_img" src="data:image/png;base64, {{ dado.croqui }}">{% endif %}
+                </div>
+            </div>
+
+            <br><br><span style="font-size: 12px;">*Croqui ilustrativo.</span>
+
+        </div>
+
+    </div>
+    {% endfor %}
+</body>
+</html>

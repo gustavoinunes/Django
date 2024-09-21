@@ -1,0 +1,39 @@
+{% extends 'navigation.html' %}
+
+{% block main %}
+
+	<div class="container" styles="background-color: #696969;">
+		<div class="row">
+			<div class="col-md"></div>
+
+			<div class="col-md">
+				<div class="card card-body align-items-center" style="width: 34rem; background-color: #ffffff; padding: 20px 20px 20px 20px;	margin:20px;">
+
+					<h3>Gerador de etiqueta</h3>
+					<p>Insira o código do pedido e o item para gerar etiqueta.</p>
+					<form class="row g-3 needs-validation mb-1" method="POST" novalidate> {% csrf_token %}
+						<div class="input-group input-group-sm">
+							<span class="input-group-text">Tipo de etiqueta</span>
+							<select class="form-select form-select-sm" name="tipo_ped">
+								<option value="pdv">PEDIDO</option>
+								<option value="orc">ORÇAMENTO</option>
+							</select>
+						</div>
+						<div class="input-group input-group-sm">
+							<span class="input-group-text">Pedido</span>
+							<input type="text" id="pedido" name="pedido" class="form-control form-control-sm" placeholder="Ex: 53094" required>
+						</div>
+						<div class="d-flex flex-row justify-content-evenly">
+							<button class="btn btn-sm btn-secondary" type="submit" name="acao" value="gerar">Gerar</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+			<div class="col-md"></div>
+		</div>
+	</div>
+
+{% endblock main %}
+
+

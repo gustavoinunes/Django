@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Documento exportação</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap">
+    <style>
+        .documento {
+            font-family: "Red Hat Display", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-size: 10px;
+        }
+
+        #cabecalho {width: 120%;}
+
+        #logo {float: left; width:8%; padding-right: 50px}
+        .shipper_1 {float: left; width:24%; text-align: end; font-weight: bold}
+        .shipper_2 {float: left; width:28%; text-align: start; font-weight: 400; margin-left: 5px}
+        .shipper_3 {float: left; width:14%; text-align: end; font-weight: bold}
+        .shipper_4 {float: left; width:18%; text-align: start; font-weight: 400; margin-left: 5px}
+        
+        .cod_processo {
+            float: left;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            background-color: #B4A58C
+        }
+
+        .cliente_1 {float: left; width:20%; text-align: end; font-weight: bold}
+        .cliente_2 {float: left; width:25%; text-align: start; font-weight: 400; margin-left: 10px}
+        .cliente_3 {float: left; width:20%; text-align: end; font-weight: bold}
+        .cliente_4 {float: left; width:25%; text-align: start; font-weight: 400; margin-left: 10px; margin-bottom: 20px;}
+
+        .banco {
+            float: left; 
+            padding: 20px;
+            padding-top: 0px;
+            width:43%; 
+            background-color: rgb(235, 235, 235);
+            margin-bottom: 20px;
+            margin-right: 40px;
+        }
+        
+        .cond_pagto {
+            float: left; 
+            padding: 20px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            width:43%; 
+            background-color: rgb(235, 235, 235);
+            margin-bottom: 20px;
+        }
+
+        .frete {
+            float: left; 
+            padding: 20px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            width:43%; 
+            background-color: rgb(235, 235, 235);
+            margin-bottom: 20px;
+        }
+
+        .span {
+            background-color: #fff;
+        }
+
+        #fotos {
+            height: 80px;
+        }
+
+        #croqui {
+            height: 30px;
+        }
+
+        #tecido {
+            height: 25px;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        thead {
+            background-color: #B4A58C;
+        }
+
+        tbody{font-size: 9px}
+
+        td,th {
+            text-align: center;
+            vertical-align: middle;
+            padding: 5px;
+        }
+
+        tr:nth-child(2n) {
+            background-color: rgb(235, 235, 235);
+        }
+
+        tfoot {
+            font-weight: bolder;
+            border-top: black;
+        }
+
+        .rodape {margin-top: 20px; float: left; width:100%}
+
+        hr { width:100%; height: 2px; background-color: #B4A58C; border: #B4A58C;}
+
+        footer {margin-left: 20px; margin-top: 50px;}
+    </style>
+</head>
+<body>
+    <div class="documento">
+
+        <div class="cabecalho">
+            <div><img id="logo" src="data:image/png;base64, {{ processo.logo }}"></div>
+            <div class="shipper_1">
+                <td>SHIPPER / MANUFACTURER:</td><br>
+                <td>ADRESS:</td><br>
+                <td>CITY:</td><br>
+                <td>COUNTRY:</td><br>
+                <td>ZIP CODE:</td><br>
+            </div>
+            <div class="shipper_2">
+                <td>GRUPO SOHOME LTDA</td><br>
+                <td>AVENIDA ANTÔNIO VOLPATO, 4044</td><br>
+                <td>SARANDI</td><br>
+                <td>BRAZIL</td><br>
+                <td>87111-011</td><br>
+            </div>
+            <div class="shipper_3">
+                <td>CNPJ:</td><br>
+                <td>PHONE:</td><br>
+                <td>CONTACT:</td><br>
+                <td>E-MAIL:</td><br>
+                <td>SITE:</td><br>
+            </div>
+            <div class="shipper_4">
+                <td>02.749.435/0001-69</td><br>
+                <td>+55 44 3264 8550</td><br>
+                <td>MR. RODOLPHO ALVES</td><br>
+                <td>export@gruposohome.com</td><br>
+                <td>www.meucentury.com</td><br>
+            </div>
+        </div>
+
+        <div class="cod_processo">PROFORMA INVOICE:&nbsp;&nbsp;&nbsp;{{ processo.cod_processo }}</div>
+
+        <div id="cliente">
+            <div class="cliente_1">
+                <td>IMPORTER:</td><br>
+                <td>TAX ID/RUT/RUC/EIN/NIT:</td><br>
+                <td>ADRESS:</td><br>
+                <td>CITY:</td><br>
+                <td>COUNTRY:</td><br>
+                <td>ZIP CODE:</td><br>
+                <td>PHONE:</td><br>
+                <td>CONTACT:</td><br>
+                <td>E-MAIL:</td><br>
+            </div>
+            <div class="cliente_2">
+                <td>{{ processo.importer }}</td><br>
+                <td>{{ processo.importer_documento }}</td><br>
+                <td>{{ processo.importer_endereco }}</td><br>
+                <td>{{ processo.importer_cidade }}</td><br>
+                <td>{{ processo.importer_pais }}</td><br>
+                <td>{{ processo.importer_cep }}</td><br>
+                <td>{{ processo.importer_telefone }}</td><br>
+                <td>{{ processo.importer_contato }}</td><br>
+                <td>{{ processo.importer_email }}</td><br>
+            </div>
+            <div class="cliente_3">
+                <td>CONSIGNEE:</td><br>
+                <td>TAX ID/RUT/RUC/EIN/NIT:</td><br>
+                <td>ADRESS:</td><br>
+                <td>CITY:</td><br>
+                <td>COUNTRY:</td><br>
+                <td>ZIP CODE:</td><br>
+                <td>PHONE:</td><br>
+                <td>CONTACT:</td><br>
+                <td>E-MAIL:</td><br>
+            </div>
+            <div class="cliente_4">
+                <td>{{ processo.consignee }}</td><br>
+                <td>{{ processo.consignee_documento }}</td><br>
+                <td>{{ processo.consignee_endereco }}</td><br>
+                <td>{{ processo.consignee_cidade }}</td><br>
+                <td>{{ processo.consignee_pais }}</td><br>
+                <td>{{ processo.consignee_cep }}</td><br>
+                <td>{{ processo.consignee_telefone }}</td><br>
+                <td>{{ processo.consignee_contato }}</td><br>
+                <td>{{ processo.consignee_email }}</td><br>
+            </div>
+        </div>
+
+
+
+        <div class="info">
+            <div class="banco">
+                <h4 style="text-align: center;">BANK INFORMATIONS</h4>
+                <td>{{ processo.banco_cobranca }}</td><br><br>
+                <b>CURRENCY: </b><td>{{ processo.moeda }}</td>
+            </div>
+            <div class="info_2">
+                <div class="cond_pagto">
+                    <h4 style="text-align: center;">PAYMENTS TERMS</h4>
+                    <td>{{ processo.cond_pagto }}</td><br><br>
+                </div>
+                <div class="frete">
+                    <h4 style="text-align: center;">FREIGHT / INSURANCE / CHARGES</h4>
+                    <td>{{ processo.banco_cobranca }}</td><br><br>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <br>
+        <hr>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="background-color: #fff;"></th>
+                        <th style="background-color: #fff;"></th>
+                        <th>PRODUCT</th>
+                        <th>CRO/TEC</th>
+                        <th>DESCRIPTION</th>
+                        <th>UNIT PRICE</th>
+                        <th>QTY</th>
+                        <th>TOTAL PRICE</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in itens %}
+                        <tr>
+
+                            <td class="span">
+                                {% if item.conforto_imagem %}
+                                    {% if item.conforto == 'SLIM' %}
+                                        <img id="conforto" style="height: 40px;" src="data:image/png;base64, {{ item.v_conforto_imagem }}">
+                                    {% else %}
+                                        <img id="conforto" style="height: 50px;" src="data:image/png;base64, {{ item.v_conforto_imagem }}">
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                            
+                            <td class="span">{% if item.produto_imagem %}<img id="fotos" src="data:image/png;base64, {{ item.produto_imagem }}">{% endif %}</td>
+                            
+                            <td style="width: 150px;">
+                                <b>ITEM CODE: </b>{{ item.cod_item }}
+                                <br>
+                                <b>STYLE: </b>{{ item.desc_item }}
+                                <br>
+                                <b>ID: </b>{{ item.id_masc }}
+                                <br>
+                                <b>HS/NCM: </b>{{ item.clas_fisc }}
+                            </td>
+                            <td style="width: 150px;">
+                                {% if item.modulacao_imagem %}<img id="croqui" src="data:image/png;base64, {{ item.modulacao_imagem }}">{% endif %}
+                                <br>
+                                {% if item.tecido %}<img id="tecido" src="data:image/png;base64, {{ item.tecido }}">{% endif %}
+                            </td>
+                            <td style="width: 400px; padding-left: 20px; text-align: start;">{{ item.desc_masc }}</td>
+                            <td>{{ item.vlr_liq }}</td>
+                            <td id="qtde">{{ item.qtde }}</td>
+                            <td>{{ item.vlr_total }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <footer class="fixed-bottom d-flex justify-content-center">
+            <img style="height: 60px;" src="data:image/png;base64, {{ processo.marcas }}">
+        </footer>
+
+    </div>
+</body>
+</html>

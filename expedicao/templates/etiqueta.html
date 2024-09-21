@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang={{ idioma }}>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Etiqueta {{ tipo_ped }} {{ pedido }}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap">
+    <style>{{ estilo_etiqueta_css }}</style>
+</head>
+
+<body>
+    {% for dado in dados %}
+    {% for i in range(0, dado.volume) %}
+    <div class="documento">
+
+        <div class="bloco_1">
+
+            <div class="rem_dest" style="height: 460px;">
+
+                <div id="remetente" style="float: left; color: white; background-color: {{ dado.cor_1 }}; width: 350px; height: 100px; padding: 15px; border-radius: 10px;">
+                    <span style="font-size: 22px; color: white;"><b id="trad_remetente_{{ dado.itpdv_id }}">REMETENTE</b></span>
+                    <div id="rem_dados" style="background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; margin-top: 10px">
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_razao_{{ dado.itpdv_id }}">RAZÃO SOCIAL</b></span>
+                        <br><span>{{ dado.rem_razao }}</span>
+                        <hr>
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_cnpj_{{ dado.itpdv_id }}">CNPJ</b></span>
+                        <br><span>{{ dado.rem_cnpj }}</span>
+                        <hr>
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_cep_{{ dado.itpdv_id }}">CEP</b></span>
+                        <br><span>{{ dado.rem_cep }}</span>
+                        <hr>
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_endereco_{{ dado.itpdv_id }}">ENDEREÇO</b></span>
+                        <br><span>{{ dado.rem_endereco }}</span>
+                        <hr>
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_cidade_{{ dado.itpdv_id }}">CIDADE - PAIS</b></span>
+                        <br><span>{{ dado.rem_cidade }}</span>
+                    </div>
+                </div>
+
+                <div id="destinatario" style="float: left; color: white; background-color: {{ dado.cor_1 }}; width: 350px; height: 100px; padding: 15px; border-radius: 10px; margin-left: 20px;">
+                    <span style="font-size: 22px; color: white;"><b  id="trad_destinatario_{{ dado.itpdv_id }}">DESTINATÁRIO</b></span>
+                    <div id="dest_dados" style="background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; margin-top: 10px">
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_razao_2_{{ dado.itpdv_id }}">RAZÃO SOCIAL</b></span>
+                        <br><span>{{ dado.dest_razao }}</span>
+                        <hr>
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_cnpj_2_{{ dado.itpdv_id }}">CNPJ</b></span>
+                        <br><span>{{ dado.dest_cnpj }}</span>
+                        <hr>
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_cep_2_{{ dado.itpdv_id }}">CEP</b></span>
+                        <br><span>{{ dado.dest_cep }}</span>
+                        <hr>
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_endereco_2_{{ dado.itpdv_id }}">ENDEREÇO</b></span>
+                        <br><span>{{ dado.dest_endereco }}</span>
+                        <hr>
+                        <span style="color: {{ dado.cor_1 }}"><b id="trad_cidade_2_{{ dado.itpdv_id }}">CIDADE - PAIS</b></span>
+                        <br><span>{{ dado.dest_cidade }}</span>
+                    </div>
+                </div>
+            
+            </div>
+
+
+            <div style="float: left; margin-bottom: 10px;">
+                <div id="pedido" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 75px; margin: 10px;">
+                    <span style="color: {{ dado.cor_1 }}"><b id="trad_pedido_{{ dado.itpdv_id }}">PEDIDO</b></span><br>
+                    <br><span>{% if dado.num_ped %}{{ dado.num_ped }}{% endif %}</span>
+                </div>
+
+                <div id="nota" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 115px; margin: 10px;">
+                    <span style="color: {{ dado.cor_1 }}"><b id="trad_nota_{{ dado.itpdv_id }}">NOTA FISCAL</b></span><br>
+                    <br><span>{% if dado.nota %}{{ dado.nota }}{% endif %}</span>
+                </div>
+
+                <div id="peso" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 135px; margin: 10px;">
+                    <span style="color: {{ dado.cor_1 }}"><b id="trad_peso_{{ dado.itpdv_id }}">PESO BRUTO</b></span><br>
+                    <br><span>{% if dado.peso_bruto %}{{ dado.peso_bruto }} kg{% endif %}</span>
+                </div>
+
+                <div id="cubagem" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 95px; margin: 10px;">
+                    <span style="color: {{ dado.cor_1 }}"><b id="trad_cubagem_{{ dado.itpdv_id }}">CUBAGEM</b></span><br>
+                    <br><span>{% if dado.cubagem %}{{ dado.cubagem }} m³{% endif %}</span>
+                </div>
+
+                <div id="volume" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 80px; margin: 10px;">
+                    <span style="color: {{ dado.cor_1 }}"><b id="trad_volume_{{ dado.itpdv_id }}">VOLUME</b></span><br>
+                    <br><span>{% if dado.volume %} {{i+1}} / {{ dado.volume }}{% endif %}</span>
+                </div>
+            </div>
+
+
+            <div id="transportadora" style="float: left;background-color: {{ dado.cor_1 }}; width: 270px; height: 100px; padding: 15px; border-radius: 10px; margin-right: 15px">
+                <span style="font-size: 22px; color: white;"><b id="trad_transp_{{ dado.itpdv_id }}">TRANSPORTADORA</b></span>
+                <div id="transporte" style="background-color: {{ dado.cor_2 }}; ; padding: 15px; border-radius: 10px; margin-top: 10px">
+                    <span style="color: {{ dado.cor_1 }}"><b id="trad_razao_transp_{{ dado.itpdv_id }}">RAZÃO SOCIAL</b></span>
+                    <br><span style="font-size: 16px;">{{ dado.transportadora }}</span>
+                    <hr>
+                    <span style="color: {{ dado.cor_1 }}"><b id="trad_manual_{{ dado.itpdv_id }}">MANUAL DE TRANSPORTE</b></span><br>
+                    <div style="text-align: center; margin-top: 10px;; margin-bottom: 10px;"><img width=40% src="data:image/png;base64, {{ dado.qr_code }}"></div>
+                    <div style=" background-color: yellow;">
+                        <span style="font-size: 12px;"><b id="trad_receb_{{ dado.itpdv_id }}">Não receber com embalagem avariada, consulte o manual do transportador.</b></span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mascara" style="float: left; background-color: {{ dado.cor_2 }}; padding: 15px; border-radius: 10px; width: 430px; margin: 5px">
+                <span style="font-size: 20px; color: {{ dado.cor_1 }}">
+                    <b id="trad_descricao_{{ dado.itpdv_id }}">DESCRIÇÃO</b>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b>ID: </b>
+                </span>
+                <span>{% if dado.id %}{{ dado.id }}{% endif %}</span>
+                <br><br>
+                <span id="desc_masc" style="font-size: 15px;">{{ dado.desc_masc }}</span>
+            </div>
+
+        </div>
+
+
+        <div class="bloco_2">
+
+            <div class="marca_produto">
+                {% if dado.marca_imagem %}<img id="marca" src="data:image/png;base64, {{ dado.marca_imagem }}">{% endif %}
+                {% if dado.produto_imagem %}<img id="produto" src="data:image/png;base64, {{ dado.produto_imagem }}">{% endif %}
+            </div>
+
+            <span id="trad_foto_{{ dado.itpdv_id }}" style="font-size: 12px;">*Imagem ilustrativa.</span>
+
+            <div id="familia" style="text-align: center; padding: 15px; width: 100%;">
+                <b style="font-size: 35px; color: {{ dado.cor_1 }}">{{ dado.item }}</b>
+            </div>
+
+
+            <div style="height: 200px; margin-top: 10px;">
+
+                <div id="tecido" style="float: left; width: 110px; height: 190px; margin-right: 15px">
+                    <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b id="trad_tecido_{{ dado.itpdv_id }}">TECIDO</b></span><br><br>
+                    {% for dado_2 in dados_2 %}
+                        {% if dado_2.itpdv_id == dado.itpdv_id and dado_2.tipo == 963 %}
+                            <div style="float: left; width: 105px; margin: 5px;">
+                                <img id="tecido_img" style="float: left; padding-right: 10px" width=35 height=50 src="data:image/png;base64, {{ dado_2.tec_imagem }}">
+                                <span style="font-size: 16px;">{{ dado_2.desc_pai }}</span><br>
+                                <span style="font-size: 16px;">{{ dado_2.desc_filho }}</span><br>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+
+                <div id="acabamento" style="float: left; padding-left: 15px; width: 270px; height: 215px; border-left: 1px solid #bfc8cc; border-right: 1px solid #bfc8cc">
+                    <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b id="trad_acabamento_{{ dado.itpdv_id }}">ACABAMENTO</b></span><br><br>
+                    {% for dado_2 in dados_2 %}
+                        {% if dado_2.itpdv_id == dado.itpdv_id and dado_2.tipo == 980 %}
+                            <div style="float: left; width: 265px; margin: 5px;">
+                                <img id="acab_img" style="float: left; padding-right: 10px" width=35 height=50 src="data:image/png;base64, {{ dado_2.acab_imagem }}">
+                                <span style="font-size: 16px;">{{ dado_2.desc_pai }}</span><br>
+                                <span style="font-size: 16px;">{{ dado_2.desc_filho }}</span><br>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>  
+
+                <div id="conforto" style="float: left; width: 115px; height: 90px; margin-left: 15px;">
+                    <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b id="trad_conforto_{{ dado.itpdv_id }}">CONFORTO</b></span>
+                    <div style="text-align: center; margin-top: 20px; height: 70px;">
+                        {% if dado.conforto %}<img id="conforto_img" src="data:image/png;base64, {{ dado.conforto_imagem }}">{% endif %}
+                    </div>
+                    <span style="font-size: 20px; color: {{ dado.cor_1 }}"><b id="trad_dimensao_{{ dado.itpdv_id }}">DIMENSÕES</b></span><br>
+                    <br><span style="font-size: 16px; color: {{ dado.cor_1 }}"><b>C:&nbsp;&nbsp;&nbsp;</b>{% if dado.comprimento %}{{ dado.comprimento }}{% endif %}</span>
+                    <br><span style="font-size: 16px; color: {{ dado.cor_1 }}"><b>P:&nbsp;&nbsp;&nbsp;</b>{% if dado.profundidade %}{{ dado.profundidade }}{% endif %}</span>
+                    <br><span style="font-size: 16px; color: {{ dado.cor_1 }}"><b>A:&nbsp;&nbsp;&nbsp;</b>{% if dado.altura %}{{ dado.altura }}{% endif %}</span>
+                </div>
+
+            </div>
+
+            <div id="croqui" style="float: left; padding: 10px; width: 520px; height: 240px; margin-top: 15px;">
+                <span style="font-size: 20px; color: {{ dado.cor_1 }}">
+                    <b id="trad_modulacao_{{ dado.itpdv_id }}">MODULAÇÃO</b>
+                    <b>:&nbsp;&nbsp;</b>
+                </span>
+                <span style="font-size: 16px;">&nbsp;&nbsp;{% if dado.desc_mod %}{{ dado.desc_mod }}{% endif %}</span>
+                <div style="text-align: center; margin-top: 15px;">
+                    {% if dado.croqui %}<img id="croqui_img" src="data:image/png;base64, {{ dado.croqui }}">{% endif %}
+                </div>
+                <span id="trad_croqui_{{ dado.itpdv_id }}" style="font-size: 12px;">*Croqui ilustrativo.</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+    {% endfor %}
+
+    <script>
+        {{ dicionario_tradutor_js }} // Inicia a inclusão de um dicionário JavaScript.
+        
+        function setLanguage() { // Função que ajusta a linguagem da interface de acordo com o idioma selecionado.
+        
+            const lang = document.documentElement.lang; // Captura o idioma atual definido no elemento HTML.
+        
+            {% for dado in dados %} // Loop que itera sobre cada item na lista 'dados'.
+                // Atualiza o texto dos elementos com o ID correspondente às traduções baseadas no idioma atual.
+                document.getElementById('trad_remetente_{{ dado.itpdv_id }}').innerText = translations[lang].trad_remetente;
+                document.getElementById('trad_destinatario_{{ dado.itpdv_id }}').innerText = translations[lang].trad_destinatario;
+                document.getElementById('trad_razao_{{ dado.itpdv_id }}').innerText = translations[lang].trad_razao;
+                document.getElementById('trad_cnpj_{{ dado.itpdv_id }}').innerText = translations[lang].trad_cnpj;
+                document.getElementById('trad_cep_{{ dado.itpdv_id }}').innerText = translations[lang].trad_cep;
+                document.getElementById('trad_endereco_{{ dado.itpdv_id }}').innerText = translations[lang].trad_endereco;
+                document.getElementById('trad_cidade_{{ dado.itpdv_id }}').innerText = translations[lang].trad_cidade;
+                document.getElementById('trad_razao_2_{{ dado.itpdv_id }}').innerText = translations[lang].trad_razao_2;
+                document.getElementById('trad_cnpj_2_{{ dado.itpdv_id }}').innerText = translations[lang].trad_cnpj_2;
+                document.getElementById('trad_cep_2_{{ dado.itpdv_id }}').innerText = translations[lang].trad_cep_2;
+                document.getElementById('trad_endereco_2_{{ dado.itpdv_id }}').innerText = translations[lang].trad_endereco_2;
+                document.getElementById('trad_cidade_2_{{ dado.itpdv_id }}').innerText = translations[lang].trad_cidade_2;
+                document.getElementById('trad_pedido_{{ dado.itpdv_id }}').innerText = translations[lang].trad_pedido;
+                document.getElementById('trad_nota_{{ dado.itpdv_id }}').innerText = translations[lang].trad_nota;
+                document.getElementById('trad_peso_{{ dado.itpdv_id }}').innerText = translations[lang].trad_peso;
+                document.getElementById('trad_cubagem_{{ dado.itpdv_id }}').innerText = translations[lang].trad_cubagem;
+                document.getElementById('trad_volume_{{ dado.itpdv_id }}').innerText = translations[lang].trad_volume;
+                document.getElementById('trad_transp_{{ dado.itpdv_id }}').innerText = translations[lang].trad_transp;
+                document.getElementById('trad_razao_transp_{{ dado.itpdv_id }}').innerText = translations[lang].trad_razao_transp;
+                document.getElementById('trad_manual_{{ dado.itpdv_id }}').innerText = translations[lang].trad_manual;
+                document.getElementById('trad_receb_{{ dado.itpdv_id }}').innerText = translations[lang].trad_receb;
+                document.getElementById('trad_descricao_{{ dado.itpdv_id }}').innerText = translations[lang].trad_descricao;
+                document.getElementById('trad_tecido_{{ dado.itpdv_id }}').innerText = translations[lang].trad_tecido;
+                document.getElementById('trad_acabamento_{{ dado.itpdv_id }}').innerText = translations[lang].trad_acabamento;
+                document.getElementById('trad_conforto_{{ dado.itpdv_id }}').innerText = translations[lang].trad_conforto;
+                document.getElementById('trad_dimensao_{{ dado.itpdv_id }}').innerText = translations[lang].trad_dimensao;
+                document.getElementById('trad_modulacao_{{ dado.itpdv_id }}').innerText = translations[lang].trad_modulacao;
+                document.getElementById('trad_foto_{{ dado.itpdv_id }}').innerText = translations[lang].trad_foto;
+                document.getElementById('trad_croqui_{{ dado.itpdv_id }}').innerText = translations[lang].trad_croqui;
+            {% endfor %}
+        }
+        
+        // Define a função setLanguage para ser chamada quando a janela for carregada.
+        window.onload = setLanguage;
+    </script>
+
+
+</body>
+</html>

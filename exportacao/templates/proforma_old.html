@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Documento exportação</title>
+    <link rel="icon" href="{% static 'img/icone.png' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap">
+    <link rel="stylesheet" href="{% static 'css/exportacao_documento.css' %}">
+</head>
+<body>
+    <div class="documento">
+        <div class="cabecalho">
+            <div><img id="logo" src="{% static 'img/logo.png' %}"></div>
+            <div class="shipper_1">
+                <td>SHIPPER / MANUFACTURER:</td><br>
+                <td>ADRESS:</td><br>
+                <td>CITY:</td><br>
+                <td>COUNTRY:</td><br>
+                <td>ZIP CODE:</td><br>
+            </div>
+            <div class="shipper_2">
+                <td>GRUPO SOHOME LTDA</td><br>
+                <td>AVENIDA ANTÔNIO VOLPATO, 4044</td><br>
+                <td>SARANDI</td><br>
+                <td>BRAZIL</td><br>
+                <td>87111-011</td><br>
+            </div>
+            <div class="shipper_3">
+                <td>CNPJ:</td><br>
+                <td>PHONE:</td><br>
+                <td>CONTACT:</td><br>
+                <td>E-MAIL:</td><br>
+                <td>SITE:</td><br>
+            </div>
+            <div class="shipper_4">
+                <td>02.749.435/0001-69</td><br>
+                <td>+55 44 3264 8550</td><br>
+                <td>MR. RODOLPHO ALVES</td><br>
+                <td>export@gruposohome.com</td><br>
+                <td>www.meucentury.com</td><br>
+            </div>
+        </div>
+
+        {% for processo in processo %}
+
+            <div class="cod_processo">PROFORMA INVOICE:&nbsp;&nbsp;&nbsp;{{ processo.cod_processo }}</div>
+
+
+            <div id="cliente">
+                <div class="cliente_1">
+                    <td>IMPORTER:</td><br>
+                    <td>TAX ID/RUT/RUC/EIN/NIT:</td><br>
+                    <td>ADRESS:</td><br>
+                    <td>CITY:</td><br>
+                    <td>COUNTRY:</td><br>
+                    <td>ZIP CODE:</td><br>
+                    <td>PHONE:</td><br>
+                    <td>CONTACT:</td><br>
+                    <td>E-MAIL:</td><br>
+                </div>
+                <div class="cliente_2">
+                    <td>{{ processo.importer }}</td><br>
+                    <td>{{ processo.importer_documento }}</td><br>
+                    <td>{{ processo.importer_endereco }}</td><br>
+                    <td>{{ processo.importer_cidade }}</td><br>
+                    <td>{{ processo.importer_pais }}</td><br>
+                    <td>{{ processo.importer_cep }}</td><br>
+                    <td>{{ processo.importer_telefone }}</td><br>
+                    <td>{{ processo.importer_contato }}</td><br>
+                    <td>{{ processo.importer_email }}</td><br>
+                </div>
+                <div class="cliente_3">
+                    <td>CONSIGNEE:</td><br>
+                    <td>TAX ID/RUT/RUC/EIN/NIT:</td><br>
+                    <td>ADRESS:</td><br>
+                    <td>CITY:</td><br>
+                    <td>COUNTRY:</td><br>
+                    <td>ZIP CODE:</td><br>
+                    <td>PHONE:</td><br>
+                    <td>CONTACT:</td><br>
+                    <td>E-MAIL:</td><br>
+                </div>
+                <div class="cliente_4">
+                    <td>{{ processo.consignee }}</td><br>
+                    <td>{{ processo.consignee_documento }}</td><br>
+                    <td>{{ processo.consignee_endereco }}</td><br>
+                    <td>{{ processo.consignee_cidade }}</td><br>
+                    <td>{{ processo.consignee_pais }}</td><br>
+                    <td>{{ processo.consignee_cep }}</td><br>
+                    <td>{{ processo.consignee_telefone }}</td><br>
+                    <td>{{ processo.consignee_contato }}</td><br>
+                    <td>{{ processo.consignee_email }}</td><br>
+                </div>
+            </div>
+
+        {% endfor %}
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>PRODUCT</th>
+                        <th>ITEM CODE</th>
+                        <th>STYLE</th>
+                        <th>CROQUI</th>
+                        <th>TECIDO</th>
+                        <th>ID</th>
+                        <th>DESCRIPTION</th>
+                        <th>QTY</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in itens %}
+                        <tr>
+                            <td>
+                                {% if item.conforto == 'SLIM' %}
+                                    <img id="conforto" src="data:image/png;base64, {{ item.conforto }}">
+                                {% elif item.conforto == 'COZY' %}
+                                    <img id="conforto" src="data:image/png;base64, {{ item.conforto }}">
+                                {% elif item.conforto == 'EASYFIT' %}
+                                    <img id="conforto" src="data:image/png;base64, {{ item.conforto }}">
+                                {% endif %}
+                            </td>
+                            <td>{% if item.imagem %}<img id="fotos" src="data:image/png;base64, {{ item.imagem }}">{% endif %}</td>
+                            <td>{{ item.cod_item }}</td>
+                            <td>{{ item.desc_item }}</td>
+                            <td>
+                                {% if item.lado == 'DIREITO' %}
+                                    <img id="croqui" style="scale: -1 1;" src="{% static 'img/croqui/' %}{{ item.modulacao }}">
+                                {% else %}
+                                    <img id="croqui" src="{% static 'img/croqui/' %}{{ item.modulacao }}">
+                                {% endif %}
+                            </td>
+                            <td>{% if item.tecido %}<img id="tecido" src="data:image/png;base64, {{ item.tecido }}">{% endif %}</td>
+                            <td>{{ item.id_masc }}</td>
+                            <td>{{ item.desc_masc }}</td>
+                            <td id="qtde">{{ item.qtde }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td> TOTAL </td>
+                        <td> &nbsp; </td>
+                        <td> aaaa </td>
+                    </tr>
+                </tfoot>  
+
+            </table>
+
+        </div>
+        <div class="rodape">
+            <img src="{% static 'img/marcas.png' %}" width=780>
+        </div>
+    </div>
+</body>
+</html>

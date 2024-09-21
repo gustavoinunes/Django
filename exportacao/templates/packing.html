@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Packing list {{ processo.cod_processo }}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap">
+    <style>
+        body {margin: 0;}
+
+        .documento {
+            font-family: "Red Hat Display", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-size: 11px;
+        }
+
+        #cabecalho {width: 120%;}
+
+        #logo {float: left; width:12%; padding-left: 50px; margin-right: 90px; margin-top: 45px;}
+        #letreiro {float: left; width: 18%;padding-right: 80px; margin-bottom: 20px; margin-top: 65px;}
+        .shipper_1 {float: left; width:20%; text-align: end; font-weight: bold; margin-top: 25px;}
+        .shipper_2 {float: left; width:19%; text-align: start; font-weight: 400; margin-left: 5px; margin-top: 25px;}
+        
+        .cod_processo {
+            float: left;
+            padding: 5px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            background-color: #B4A58C
+        }
+
+        .cliente_1 {float: left; width:20%; text-align: end; font-weight: bold; margin-left: 5px;}
+        .cliente_2 {float: left; width:27%; text-align: start; font-weight: 400; margin-left: 5px}
+        .cliente_3 {float: left; width:24%; text-align: end; font-weight: bold}
+        .cliente_4 {float: left; width:27%; text-align: start; font-weight: 400; margin-left: 5px; margin-right: 5px; margin-bottom: 20px;}
+
+        .totais {margin-top: 10px;}
+        .tot_1 {float: left; width:15%; text-align: end; font-weight: bold;}
+        .tot_2 {float: left; width:15%; text-align: start; font-weight: 400; margin-left: 10px}
+        .tot_3 {float: left; width:15%; text-align: end; font-weight: bold}
+        .tot_4 {float: left; width:20%; text-align: start; font-weight: 400; margin-left: 10px}
+        .tot_5 {float: left; width:20%; text-align: end; font-weight: bold}
+        .tot_6 {float: left; width:7%; text-align: end; font-weight: 400; margin-left: 10px; margin-bottom: 10px;}
+
+        #fotos {
+            max-height: 60px;
+            max-width: 120px;
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
+
+        #croqui {
+            max-height: 25px;
+        }
+
+        #tecido {
+            height: 20px;
+        }
+
+        .tabela_itens {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        thead {
+            background-color: #B4A58C;
+        }
+
+        .body_item {font-size: 10px;}
+        
+        .dado_item,th {
+            text-align: center;
+            vertical-align: middle;
+            padding-left: 5px;
+            padding-right: 5px;
+            border-top: 0px solid #B4A58C;
+        }
+        
+        tr:nth-child(2n) {
+            background-color: rgb(235, 235, 235);
+        }
+
+        .span {
+            background-color: #fff;
+            vertical-align: top;
+            border-top: 0px solid #B4A58C;
+        }
+
+        .span:nth-child(2n) {
+            border-right: 0px solid #B4A58C;
+        }
+
+        hr { width:100%; height: 2px; background-color: #B4A58C; border: #B4A58C;}
+    </style>
+</head>
+<body>
+    <div class="documento">
+
+        <div class="cabecalho">
+            <div><img id="logo" src="data:image/png;base64, {{ processo.logo }}"></div>
+            <div><img id="letreiro" src="data:image/png;base64, {{ processo.letreiro }}"></div>
+            <div class="shipper_1">
+                <td>SHIPPER / MANUFACTURER:</td><br>
+                <td>ADRESS:</td><br>
+                <td>CITY:</td><br>
+                <td>COUNTRY:</td><br>
+                <td>ZIP CODE:</td><br>
+                <td>CNPJ:</td><br>
+                <td>PHONE:</td><br>
+                <td>CONTACT:</td><br>
+                <td>E-MAIL:</td><br>
+                <td>SITE:</td><br>
+            </div>
+            <div class="shipper_2">
+                <td>GRUPO SOHOME LTDA</td><br>
+                <td>AVENIDA ANTÔNIO VOLPATO, 4044</td><br>
+                <td>SARANDI</td><br>
+                <td>BRAZIL</td><br>
+                <td>87111-011</td><br>
+                <td>02.749.435/0001-69</td><br>
+                <td>+55 44 3264 8550</td><br>
+                <td>MR. RODOLPHO ALVES</td><br>
+                <td>export@gruposohome.com</td><br>
+                <td>www.meucentury.com</td><br>
+        </div>
+
+        <div class="cod_processo">PACKING LIST:&nbsp;&nbsp;&nbsp;{{ processo.cod_processo }}</div>
+
+        <div id="cliente">
+            <div class="cliente_1">
+                <td>IMPORTER:</td><br>
+                <td>TAX ID/RUT/RUC/EIN/NIT:</td><br>
+                <td>ADRESS:</td><br>
+                <td>CITY:</td><br>
+                <td>COUNTRY:</td><br>
+                <td>ZIP CODE:</td><br>
+                <td>PHONE:</td><br>
+                <td>CONTACT:</td><br>
+                <td>E-MAIL:</td><br>
+            </div>
+            <div class="cliente_2">
+                <td>{{ processo.importer }}</td><br>
+                <td>{{ processo.importer_documento }}</td><br>
+                <td>{{ processo.importer_endereco }}</td><br>
+                <td>{{ processo.importer_cidade }}</td><br>
+                <td>{{ processo.importer_pais }}</td><br>
+                <td>{{ processo.importer_cep }}</td><br>
+                <td>{{ processo.importer_telefone }}</td><br>
+                <td>{{ processo.importer_contato }}</td><br>
+                <td>{{ processo.importer_email }}</td><br>
+            </div>
+            <div class="cliente_3">
+                <td>CONSIGNEE:</td><br>
+                <td>TAX ID/RUT/RUC/EIN/NIT:</td><br>
+                <td>ADRESS:</td><br>
+                <td>CITY:</td><br>
+                <td>COUNTRY:</td><br>
+                <td>ZIP CODE:</td><br>
+                <td>PHONE:</td><br>
+                <td>CONTACT:</td><br>
+                <td>E-MAIL:</td><br>
+            </div>
+            <div class="cliente_4">
+                <td>{{ processo.consignee }}</td><br>
+                <td>{{ processo.consignee_documento }}</td><br>
+                <td>{{ processo.consignee_endereco }}</td><br>
+                <td>{{ processo.consignee_cidade }}</td><br>
+                <td>{{ processo.consignee_pais }}</td><br>
+                <td>{{ processo.consignee_cep }}</td><br>
+                <td>{{ processo.consignee_telefone }}</td><br>
+                <td>{{ processo.consignee_contato }}</td><br>
+                <td>{{ processo.consignee_email }}</td><br>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="totais">
+            <div class="tot_1">
+                <td>PRODUCT QTY:</td><br>
+                <td>PACKAGES VOL:</td><br>
+                <td>PRODUCTION TIME:</td><br>
+                <td>PURCHASE ORDER:</td><br>
+            </div>
+            <div class="tot_2">
+                <td>{{ processo.soma_qtde }}</td><br>
+                <td>{{ processo.soma_volume }}</td><br>
+                <td>{{ processo.dias_viagem }} DAYS AFTER APPROVAL</td><br>
+                <td>{% if processo.ordem_compra %}{{ processo.ordem_compra }}{% endif %}</td><br>
+            </div>
+            <div class="tot_3">
+                <td>INCOTERM:</td><br>
+                <td>MODE OF TRANSPORT:</td><br>
+                <td>PLACE OF DEPARTURE:</td><br>
+                <td>PLACE OF ARRIVAL:</td><br>
+            </div>
+            <div class="tot_4">
+                <td>{{ processo.frete_sigla }}{% if processo.frete %} - {{ processo.frete }}{% endif %}</td><br>
+                <td>{{ processo.transporte }}</td><br>
+                <td>{{ processo.origem }}</td><br>
+                <td>{{ processo.destino }}</td><br>
+            </div>
+            <div class="tot_5">
+                <td></td><br>
+                <td>NET WEIGHT:</td><br>
+                <td>GROSS WEIGHT:</td><br>
+                <td>CUBAGE:</td><br>
+            </div>
+            <div class="tot_6">
+                <td></td><br>
+                <td>{{ processo.soma_peso_liq }} KG</td><br>
+                <td>{{ processo.soma_peso_brt }} KG</td><br>
+                <td>{{ processo.soma_cubagem }} M³</td><br>
+            </div>
+        </div>
+
+        <hr>
+
+        <div>
+            <table class="tabela_itens">
+                <thead>
+                    <tr>
+                        <th>ILLUSTRATIVE IMAGE</th>
+                        <th></th>
+                        <th>SKETCH</th>
+                        <th>PRODUCT</th>
+                        <th>ITEM CODE</th>
+                        <th>STYLE</th>
+                        <th>FABRIC</th>
+                        <th>ID</th>
+                        <th>DESCRIPTION</th>
+                        <th>QTY</th>
+                        <th>VOL</th>
+                        <th>NET WEIGHT UNIT (KG)</th>
+                        <th>NET WEIGHT TOTAL (KG)</th>
+                        <th>NET GROSS UNIT (KG)</th>
+                        <th>NET GROSS TOTAL (KG)</th>
+                        <th>CUBAGE UNIT (KG)</th>
+                        <th>CUBAGE TOTAL (KG)</th>
+                    </tr>
+                </thead>
+
+                <tbody class="body_item">
+
+                    {% for item in itens %}
+                        <tr class="linha_item" style="background-color: rgb({{ item.COR_BACK }});">
+
+                            {% if item.CONT_IMG_PACK != 0 %}
+                                <td class="span dado_item" rowspan="{{ item.CONT_IMG_PACK }}">{% if item.PRODUTO_IMAGEM %}<img id="fotos" src="data:image/png;base64, {{ item.PRODUTO_IMAGEM }}">{% endif %}</td>
+                            {% endif %}
+
+                            {% if item.CONT_IMG_PACK != 0 %}
+                                <td class="span dado_item" rowspan="{{ item.CONT_IMG_PACK }}">
+                                    {% if item.CONFORTO_IMAGEM %}
+                                        {% if item.CONFORTO_ == 'SLIM' %}
+                                            <br><img id="conforto" style="height: 30px;" src="data:image/png;base64, {{ item.V_CONFORTO_IMAGEM }}">
+                                        {% else %}
+                                            <br><img id="conforto" style="height: 40px;" src="data:image/png;base64, {{ item.V_CONFORTO_IMAGEM }}">
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+
+                            {% if item.CONT_CROQUI != 0 %}
+                                <td class="dado_item" style="width: 30px; border-right: 0px solid #B4A58C; vertical-align: middle;" rowspan="{{ item.CONT_CROQUI }}">{% if item.MODULACAO_IMAGEM %}<img id="croqui" src="data:image/png;base64, {{ item.MODULACAO_IMAGEM }}">{% endif %}</td>
+                            {% endif %}
+
+                            {% if item.FAT_CONV_VOL == 1 or item.FAT_CONV_VOL == 0 %}
+                                <td class="dado_item" style="width: 20px" rowspan="1">{% if item.CLASSIFICACAO %}{{ item.CLASSIFICACAO }}{% endif %}</td>
+                                <td class="dado_item" style="width: 20px" rowspan="1">{{ item.COD_ITEM }}</td>
+                                <td class="dado_item" style="width: 60px" rowspan="1">{{ item.DESC_ITEM }}</td>
+                                <td class="dado_item" style="width: 15px" rowspan="1">{% if item.TECIDO %}{{ item.TECIDO }}{% endif %}</td>
+                                <td class="dado_item" style="width: 40px" rowspan="1">{{ item.ID_MASC }}</td>
+                            {% elif item.ID_ITEM_PROCESSO != None %}
+                                <td class="dado_item" style="width: 20px" rowspan="{{ item.CONT_CROQUI }}">{% if item.CLASSIFICACAO %}{{ item.CLASSIFICACAO }}{% endif %}</td>
+                                <td class="dado_item" style="width: 20px" rowspan="{{ item.CONT_CROQUI }}">{{ item.COD_ITEM }}</td>
+                                <td class="dado_item" style="width: 60px" rowspan="{{ item.CONT_CROQUI }}">{{ item.DESC_ITEM }}</td>
+                                <td class="dado_item" style="width: 15px" rowspan="{{ item.CONT_CROQUI }}">{% if item.TECIDO %}{{ item.TECIDO }}{% endif %}</td>
+                                <td class="dado_item" style="width: 40px" rowspan="{{ item.CONT_CROQUI }}">{{ item.ID_MASC }}</td>
+                            {% endif %}
+
+                            <td class="dado_item" style="width: 250px; text-align: start;">{{ item.DESC_MASC }}</td>
+                            <td class="dado_item" style="width: 20px; border-right: 0px solid #B4A58C;" id="qtde">{{ item.QTDE }}</td>
+                            
+                            {% if item.CONT_PACK != 0 %}
+                                <td class="dado_item" style="width: 20px" id="qtde" rowspan="{{ item.CONT_PACK }}">{{ item.QTDE }}</td>
+                                <td class="dado_item" style="width: 20px" rowspan="{{ item.CONT_PACK }}">{{ item.PESO_LIQ }}</td>
+                                <td class="dado_item" style="width: 20px" rowspan="{{ item.CONT_PACK }}">{{ item.PESO_LIQ_TOT }}</td>
+                                <td class="dado_item" style="width: 20px" rowspan="{{ item.CONT_PACK }}">{{ item.PESO_BRT }}</td>
+                                <td class="dado_item" style="width: 20px" rowspan="{{ item.CONT_PACK }}">{{ item.PESO_BRT_TOT }}</td>
+                                <td class="dado_item" style="width: 20px" rowspan="{{ item.CONT_PACK }}">{{ item.CUBAGEM }}</td>
+                                <td class="dado_item" style="width: 20px" rowspan="{{ item.CONT_PACK }}">{{ item.CUBAGEM_TOT }}</td>
+                            {% endif %}
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        <footer>
+            <div class="consideracoes" style="padding-left: 30px; background-color: #B4A58C">
+                <table  style="width: 100%; text-align: center; font-weight: bold;">
+                    <td style="width: 33%;">Products made in Brazil</td>
+                    <td style="width: 33%;">Sarandi-PR, Brazil</td>
+                    <td style="width: 33%;">{{ processo.data }}</td>
+                </table>
+            </div>
+            <br>
+            <img id="marcas" style="height: 50px; margin-left: 150px;" src="data:image/png;base64, {{ processo.marcas }}">
+        </footer>
+
+    </div>
+</body>
+</html>
